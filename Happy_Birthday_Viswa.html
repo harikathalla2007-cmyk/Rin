@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Viswa 🎂</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{
+      min-height:100vh;font-family:Arial,sans-serif;display:flex;justify-content:center;align-items:center;
+      overflow:hidden;background:linear-gradient(135deg,#ff758c,#ff7eb3,#8e9eff);color:#fff;
+    }
+    .card{
+      width:min(90%,650px);padding:45px 30px;text-align:center;border-radius:30px;
+      background:rgba(255,255,255,.16);backdrop-filter:blur(12px);
+      box-shadow:0 20px 60px rgba(0,0,0,.25);border:1px solid rgba(255,255,255,.3);
+      position:relative;z-index:2;
+    }
+    .cake{font-size:70px;animation:bounce 1.5s infinite}
+    h1{font-size:clamp(38px,8vw,70px);margin:10px 0;text-shadow:0 4px 15px rgba(0,0,0,.2)}
+    h2{font-size:28px;margin-bottom:18px}
+    .message{font-size:19px;line-height:1.7;margin:15px auto;max-width:550px}
+    .motivation{font-size:20px;font-weight:bold;margin:20px 0;color:#fff9b0}
+    button{
+      border:0;padding:14px 28px;border-radius:30px;font-size:17px;font-weight:bold;
+      cursor:pointer;background:#fff;color:#ff4f81;transition:.3s;box-shadow:0 8px 20px rgba(0,0,0,.2)
+    }
+    button:hover{transform:scale(1.08)}
+    #secret{display:none;margin-top:20px;font-size:18px;line-height:1.6}
+    .balloon{position:absolute;bottom:-120px;font-size:55px;animation:float 8s linear infinite;z-index:1}
+    .b1{left:8%;animation-delay:0s}.b2{left:28%;animation-delay:2s}.b3{right:25%;animation-delay:4s}.b4{right:7%;animation-delay:1s}
+    .sparkle{position:absolute;font-size:25px;animation:twinkle 2s infinite}
+    .s1{top:10%;left:12%}.s2{top:18%;right:12%;animation-delay:.7s}.s3{bottom:12%;left:15%;animation-delay:1.2s}.s4{bottom:18%;right:15%;animation-delay:1.8s}
+    @keyframes bounce{50%{transform:translateY(-12px) rotate(3deg)}}
+    @keyframes float{0%{transform:translateY(0) rotate(0);opacity:0}10%{opacity:1}100%{transform:translateY(-120vh) rotate(20deg);opacity:0}}
+    @keyframes twinkle{50%{transform:scale(1.5);opacity:.4}}
+    .confetti{position:fixed;width:10px;height:10px;top:-20px;animation:fall 4s linear forwards;z-index:5}
+    @keyframes fall{to{transform:translateY(110vh) rotate(720deg)}}
+  </style>
+</head>
+<body>
+  <div class="balloon b1">🎈</div><div class="balloon b2">🎈</div>
+  <div class="balloon b3">🎈</div><div class="balloon b4">🎈</div>
+  <div class="sparkle s1">✨</div><div class="sparkle s2">⭐</div>
+  <div class="sparkle s3">✨</div><div class="sparkle s4">💫</div>
+
+  <div class="card">
+    <div class="cake">🎂</div>
+    <h1>Happy Birthday!</h1>
+    <h2>Dear Viswa 💖</h2>
+    <p class="message">
+      Wishing you a wonderful birthday filled with happiness, success, and beautiful memories.
+      May every new year of your life bring you closer to your dreams.
+    </p>
+    <p class="motivation">
+      🌟 Believe in yourself. Keep learning, keep growing, and never give up on your dreams.
+      Your hard work today will become your success tomorrow! 🚀
+    </p>
+    <button onclick="showMessage()">💝 Open Your Special Wish</button>
+    <p id="secret">
+      Viswa, always remember: you are capable of achieving great things.
+      Face every challenge with courage, turn every failure into a lesson,
+      and keep moving forward. May your future be bright, successful, and full of joy! 🌈✨
+      <br><br><b>Happy Birthday once again! 🎉🥳</b>
+    </p>
+  </div>
+
+  <script>
+    function showMessage(){
+      document.getElementById("secret").style.display="block";
+      createConfetti(80);
+    }
+    function createConfetti(count){
+      const symbols=["🎉","✨","💖","⭐","🎈","🥳"];
+      for(let i=0;i<count;i++){
+        const c=document.createElement("div");
+        c.className="confetti";
+        c.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+        c.style.left=Math.random()*100+"vw";
+        c.style.fontSize=(12+Math.random()*20)+"px";
+        c.style.animationDuration=(2+Math.random()*3)+"s";
+        document.body.appendChild(c);
+        setTimeout(()=>c.remove(),5000);
+      }
+    }
+    window.onload=()=>createConfetti(35);
+  </script>
+</body>
+</html>
